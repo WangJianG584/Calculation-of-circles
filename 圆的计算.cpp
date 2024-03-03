@@ -9,33 +9,32 @@ int main()
 
     unsigned int inputtype;
     unsigned int Unit = 0; std::string LengthUnit;
-    bool Exception;
+    
     const float pi = 3.14159F;
-    float radius = 0.0F, diameter = 0.0F;
-
-    Exception = true;
+    double radius = 0.0, diameter = 0.0;
+    bool Exception= true;
     do {
         LengthUnit = "km";
 
         std::cout << "你现在输入的长度单位是多少" << "(请输入英文缩写)" << std::endl;
         std::cin >> LengthUnit;
-        if (LengthUnit == "mm") {
+        if (LengthUnit == "mm"|| LengthUnit == "MM") {
             Unit = 1;
             break;
         }
-        if (LengthUnit == "cm") {
+        if (LengthUnit == "cm" || LengthUnit == "CM") {
             Unit = 2;
             break;
         }
-        if (LengthUnit == "dm") {
+        if (LengthUnit == "dm" || LengthUnit == "DM") {
             Unit = 3;
             break;
         }
-        if (LengthUnit == "m") {
+        if (LengthUnit == "m" || LengthUnit == "M") {
             Unit = 4;
             break;
         }
-        if (LengthUnit == "km") {
+        if (LengthUnit == "km" || LengthUnit == "KM") {
             Unit = 7;
             break;
         }
@@ -43,8 +42,9 @@ int main()
             std::cout << "输入非法" << std::endl;
         }
     } while (Exception == true);
+
     do {
-        inputtype = 0;
+        inputtype = 1;
         std::cout << "你现在输入的是直径还是半径，半径请输入1，直径请输入2" << std::endl;
         std::cin >> inputtype;
         if (inputtype == 1) {
@@ -81,7 +81,7 @@ int main()
 
     if (conversion == "yes")
     {
-        float radius2 = 0.0F, diameter2 = 0.0F;
+        double radius2 = 0.0, diameter2 = 0.0;
         double area2, perimeter2;
         unsigned int Unit2 = 0; std::string LengthUnit2;
 
@@ -90,23 +90,23 @@ int main()
 
             std::cout << "请输入要换算的单位缩写" << std::endl;
             std::cin >> LengthUnit2;
-            if (LengthUnit2 == "mm") {
+            if (LengthUnit2 == "mm" || LengthUnit2 == "MM") {
                 Unit2 = 1;
                 break;
             }
-            if (LengthUnit2 == "cm") {
+            if (LengthUnit2 == "cm" || LengthUnit2 == "CM") {
                 Unit2 = 2;
                 break;
             }
-            if (LengthUnit2 == "dm") {
+            if (LengthUnit2 == "dm" || LengthUnit2 == "DM") {
                 Unit2 = 3;
                 break;
             }
-            if (LengthUnit2 == "m") {
+            if (LengthUnit2 == "m" || LengthUnit2 == "M") {
                 Unit2 = 4;
                 break;
             }
-            if (LengthUnit2 == "km") {
+            if (LengthUnit2 == "km"||LengthUnit2 == "KM") {
                 Unit2 = 7;
                 break;
             }
@@ -121,38 +121,28 @@ int main()
 
             radius2 = radius * pow(10, distance);
             diameter2 = diameter * pow(10, distance);
-            std::cout << "换算后圆的半径是：" << radius2 << LengthUnit2 << std::endl;
-            std::cout << "换算后圆的直径是：" << diameter2 << LengthUnit2 << std::endl;
             perimeter2 = perimeter * pow(10, distance);
-            area2 = area * pow(10, distance + distance);
-            std::cout << "圆换算后的周长是：" << perimeter2 << LengthUnit2 << std::endl;
-            std::cout << "圆换算后的面积是：" << area2 << LengthUnit2 << "²" << std::endl;
-
+            area2 = area * pow(100, distance);
+            
         }
 
         if (distance < 0) {
             distance = abs(distance);
+           
             radius2 = radius / pow(10, distance);
             diameter2 = diameter / pow(10, distance);
-            std::cout << "换算后圆的半径是：" << radius2 << LengthUnit2 << std::endl;
-            std::cout << "换算后圆的直径是：" << diameter2 << LengthUnit2 << std::endl;
             perimeter2 = perimeter / pow(10, distance);
-            area2 = area / pow(10, distance + distance);
-            std::cout << "圆换算后的周长是：" << perimeter2 << LengthUnit2 << std::endl;
-            std::cout << "圆换算后的面积是：" << area2 << LengthUnit2 << "²" << std::endl;
-
+            area2 = area / pow(100, distance);
         }
-        std::cout << "程序运行结束，你可以安全的关闭了";
-
-
-
-
-
+        std::cout << "换算后圆的半径是：" << radius2 << LengthUnit2 << std::endl;
+        std::cout << "换算后圆的直径是：" << diameter2 << LengthUnit2 << std::endl;
+        std::cout << "圆换算后的周长是：" << perimeter2 << LengthUnit2 << std::endl;
+        std::cout << "圆换算后的面积是：" << area2 << LengthUnit2 << "²" << std::endl;
+        
+        std::cout << "程序运行结束";
 
 
     }
-
-
 
     return 0;
 }
